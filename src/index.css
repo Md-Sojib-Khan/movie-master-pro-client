@@ -1,2 +1,29 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.hero-swiper .swiper-pagination {
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+  background: white;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px !important;
+  transition: all 0.3s ease;
+}
+
+.hero-swiper .swiper-pagination-bullet:hover {
+  opacity: 0.8;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  background: #3B82F6;
+  opacity: 1;
+  width: 20px;
+  border-radius: 4px;
+}
