@@ -6,21 +6,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 
-const TopRatedMovies = () => {
-  const [topMovies, setTopMovies] = useState([]);
-  const axiosInstance = useAxios();
 
-  useEffect(() => {
-    axiosInstance.get('/movies/top-rated')
-      .then(data => {
-        setTopMovies(data.data);
-      })
-      .catch(error => {
-        console.error('Error fetching movies:', error);
-      });
-  }, [axiosInstance]);
+const RecentlyAdded = () => {
+    const [recentMovies, setRecentMovies] = useState([]);
+    const axiosInstance = useAxios();
 
-  const breakpoints = {
+    useEffect(() => {
+        axiosInstance.get('/movies/recently-add')
+            .then(data => {
+                setRecentMovies(data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching movies:', error);
+            });
+    }, [axiosInstance]);
+
+    const breakpoints = {
     320: {
       slidesPerView: 2,
       spaceBetween: 10,
@@ -43,10 +44,9 @@ const TopRatedMovies = () => {
     },
   };
 
-  const shouldLoop = topMovies.length > 6;
-
-  return (
-    <div className='w-11/12 mx-auto my-10'>
+  const shouldLoop = recentMovies.length > 6;
+    return (
+        <div className='w-11/12 mx-auto my-10'>
       <h1 className='text-xl font-bold mb-5 border-l-4 border-red-500 pl-2'>Top Rated Movies</h1>
       <div>
         <Swiper
@@ -55,7 +55,7 @@ const TopRatedMovies = () => {
           navigation={true}
           loop={shouldLoop}
           autoplay={{
-            delay: 3000,
+            delay: 2500,
             disableOnInteraction: false,
             waitForTransition: true,
           }}
@@ -63,7 +63,7 @@ const TopRatedMovies = () => {
             swiper.autoplay.start();
           }}
         >
-          {topMovies.map((movie, index) => (
+          {recentMovies.map((movie, index) => (
             <SwiperSlide key={movie._id || index}>
               <div className="w-48 h-80 hover:bg-linear-to-br from-[#00ff75] to-[#3700ff] rounded-2xl transition-all duration-300 p-0.5 hover:shadow-[0px_0px_30px_1px_rgba(0,255,117,0.30)] group">
                 <div className="w-full h-full bg-[#1a1a1a] rounded-[19px] transition-all duration-200 group-hover:scale-98 group-hover:rounded-2xl overflow-hidden">
@@ -82,7 +82,7 @@ const TopRatedMovies = () => {
         </Swiper>
       </div>
     </div>
-  );
+    );
 };
 
-export default TopRatedMovies;
+export default RecentlyAdded;

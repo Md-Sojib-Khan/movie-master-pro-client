@@ -21,6 +21,8 @@ const Hero = () => {
       });
   }, [axiosInstance]);
 
+  const shouldLoop = movies.length > 1;
+
   return ( 
     <div className="relative w-full overflow-hidden">
       <Swiper 
@@ -33,14 +35,16 @@ const Hero = () => {
           dynamicBullets: true
         }} 
         navigation={true}
-        loop 
-        autoplay={{ delay: 3000 }}
+        loop={shouldLoop}
+        autoplay={{ 
+          delay: 3000,
+          disableOnInteraction: false 
+        }}
         className="hero-swiper"
       > 
         {movies.map((movie, index) => ( 
           <SwiperSlide key={index}>
             <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh]">
-              {/* Movie Poster with object-contain to maintain aspect ratio */}
               <div className="w-full h-full flex items-center justify-center bg-gray-900">
                 <img 
                   src={movie.posterUrl} 
@@ -52,10 +56,8 @@ const Hero = () => {
                 />
               </div>
               
-              {/* Overlay gradient with better visibility */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
               
-              {/* Movie info - Responsive positioning and sizing */}
               <div className="absolute bottom-16 left-4 right-4 md:bottom-20 md:left-10 md:right-auto text-white z-50 max-w-2xl">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 drop-shadow-lg leading-tight">
                   {movie.title}
@@ -80,13 +82,11 @@ const Hero = () => {
                   ⏱️ {movie.duration} minutes
                 </p>
                 
-                {/* Plot summary for larger screens */}
                 <p className="hidden md:block text-sm opacity-90 mt-3 line-clamp-2">
                   {movie.plotSummary}
                 </p>
               </div>
 
-              {/* Additional overlay for better text readability */}
               <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
             </div>
           </SwiperSlide> 
