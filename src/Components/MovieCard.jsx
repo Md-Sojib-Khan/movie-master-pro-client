@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const MovieCard = ({ movie }) => {
     return (
@@ -36,7 +37,7 @@ const MovieCard = ({ movie }) => {
                         </h2>
                         
                         <div className="flex flex-wrap gap-1 mb-3">
-                            <div className="badge badge-accent badge-sm">{movie.genre}</div>
+                            <div className="badge bg-red-500 text-white badge-sm">{movie.genre}</div>
                             <div className="badge badge-outline badge-sm">📅 {movie.releaseYear}</div>
                             <div className="badge badge-outline badge-sm">⏱️ {movie.duration}m</div>
                         </div>
@@ -49,9 +50,9 @@ const MovieCard = ({ movie }) => {
                             <div className="text-xs text-gray-400">
                                 🎬 {movie.director}
                             </div>
-                            <button className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">
+                            <Link to={`/movies/${movie._id}`} className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">
                                 Details
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
