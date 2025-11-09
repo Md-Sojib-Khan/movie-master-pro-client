@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 
 const Navbar = () => {
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
+
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/'}>All Movies</NavLink></li>
         <li><NavLink to={'/'}>My Collection</NavLink></li>
     </>
+
+
+    useEffect(() => {
+        const html = document.querySelector('html')
+        html.setAttribute("data-theme", theme)
+        localStorage.setItem("theme", theme)
+    }, [theme])
+
+
+    const handleTheme = (checked) => {
+        setTheme(checked ? "dark" : "light")
+    }
+
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -28,6 +43,11 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3">
+                <input
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    type="checkbox"
+                    defaultChecked={localStorage.getItem('theme') === "dark"}
+                    className="toggle" />
                 <a className="btn">Login</a>
                 <a className="btn">Register</a>
             </div>

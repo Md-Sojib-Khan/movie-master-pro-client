@@ -42,7 +42,7 @@ const AboutPlatform = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
             About MovieMaster Pro
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg max-w-3xl mx-auto leading-relaxed">
             Your ultimate companion for discovering, organizing, and managing movies. 
             Built for cinephiles by cinephiles, we bring you the most comprehensive 
             movie management experience.
@@ -55,7 +55,7 @@ const AboutPlatform = () => {
               <h3 className="text-2xl font-bold text-primary mb-4">
                 Why Choose MovieMaster Pro?
               </h3>
-              <p className="text-gray-700 mb-4 leading-relaxed">
+              <p className="mb-4 leading-relaxed">
                 We understand the passion for cinema. That's why we've created a platform 
                 that goes beyond just listing movies. With advanced features and intuitive 
                 design, managing your movie journey has never been easier.
@@ -83,15 +83,15 @@ const AboutPlatform = () => {
             <div className="grid grid-cols-3 gap-4 text-center">
               <div className="bg-primary/10 p-4 rounded-xl hover:scale-105 transition ease-in-out">
                 <div className="text-2xl font-bold text-primary">1K+</div>
-                <div className="text-sm text-gray-600">Movies</div>
+                <div className="text-sm">Movies</div>
               </div>
               <div className="bg-secondary/10 p-4 rounded-xl hover:scale-105 transition ease-in-out">
                 <div className="text-2xl font-bold text-secondary">5K+</div>
-                <div className="text-sm text-gray-600">Users</div>
+                <div className="text-sm">Users</div>
               </div>
               <div className="bg-accent/10 p-4 rounded-xl hover:scale-105 transition ease-in-out">
                 <div className="text-2xl font-bold text-accent">50K+</div>
-                <div className="text-sm text-gray-600">Reviews</div>
+                <div className="text-sm">Reviews</div>
               </div>
             </div>
           </div>
@@ -126,10 +126,10 @@ const AboutPlatform = () => {
               <div className="text-primary mb-4 group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
-              <h4 className="text-xl font-semibold mb-3 text-gray-800">
+              <h4 className="text-xl font-semibold mb-3">
                 {feature.title}
               </h4>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="leading-relaxed">
                 {feature.description}
               </p>
             </div>
