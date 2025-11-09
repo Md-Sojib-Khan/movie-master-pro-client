@@ -4,21 +4,22 @@ import 'swiper/css';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'; 
 import 'swiper/css/pagination'; 
 import 'swiper/css/navigation'; 
-import 'swiper/css/autoplay'; 
-import axios from 'axios';
+import 'swiper/css/autoplay';
+import useAxios from '../../Hooks/useAxios';
 
 const Hero = () => { 
   const [movies, setMovies] = useState([]); 
+  const axiosInstance = useAxios()
 
   useEffect(() => {
-    axios.get('http://localhost:3000/movies')
+    axiosInstance.get('/movies')
       .then(data => {
         setMovies(data.data.slice(0, 5));
       })
       .catch(error => {
         console.error('Error fetching movies:', error);
       });
-  }, []);
+  }, [axiosInstance]);
 
   return ( 
     <div className="relative w-full overflow-hidden">
@@ -90,93 +91,7 @@ const Hero = () => {
             </div>
           </SwiperSlide> 
         ))} 
-      </Swiper> 
-
-      {/* Custom CSS for Swiper Default Styles */}
-      <style jsx global>{`
-        /* Pagination - Bottom Center (Default Position) */
-        .hero-swiper .swiper-pagination {
-          bottom: 20px !important;
-          left: 50% !important;
-          transform: translateX(-50%) !important;
-          width: auto !important;
-        }
-
-        .hero-swiper .swiper-pagination-bullet {
-          background: white;
-          opacity: 0.5;
-          width: 8px;
-          height: 8px;
-          margin: 0 4px !important;
-          transition: all 0.3s ease;
-        }
-
-        .hero-swiper .swiper-pagination-bullet:hover {
-          opacity: 0.8;
-        }
-
-        .hero-swiper .swiper-pagination-bullet-active {
-          background: #3B82F6;
-          opacity: 1;
-          width: 20px;
-          border-radius: 4px;
-        }
-
-        /* Navigation - Center Vertical Sides (Default Position) */
-        .hero-swiper .swiper-button-next,
-        .hero-swiper .swiper-button-prev {
-          color: white;
-          background: rgba(0, 0, 0, 0.3);
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          backdrop-filter: blur(4px);
-          transition: all 0.3s ease;
-        }
-
-        .hero-swiper .swiper-button-next:hover,
-        .hero-swiper .swiper-button-prev:hover {
-          background: rgba(0, 0, 0, 0.6);
-          transform: scale(1.1);
-        }
-
-        .hero-swiper .swiper-button-next:after,
-        .hero-swiper .swiper-button-prev:after {
-          font-size: 20px;
-          font-weight: bold;
-        }
-
-        .hero-swiper .swiper-button-prev {
-          left: 10px;
-        }
-
-        .hero-swiper .swiper-button-next {
-          right: 10px;
-        }
-
-        /* Hide navigation on mobile for better UX */
-        @media (max-width: 768px) {
-          .hero-swiper .swiper-button-next,
-          .hero-swiper .swiper-button-prev {
-            display: none;
-          }
-          
-          .hero-swiper .swiper-pagination {
-            bottom: 10px !important;
-          }
-        }
-
-        /* Larger screens - adjust navigation position */
-        @media (min-width: 1024px) {
-          .hero-swiper .swiper-button-prev {
-            left: 20px;
-          }
-
-          .hero-swiper .swiper-button-next {
-            right: 20px;
-          }
-        }
-      `}</style>
+      </Swiper>
     </div> 
   ); 
 }; 
