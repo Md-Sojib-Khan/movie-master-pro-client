@@ -1,32 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData, useNavigate, Link } from 'react-router';
 import { FaStar, FaClock, FaCalendarAlt, FaLanguage, FaGlobe, FaUser, FaEdit, FaTrash, FaArrowLeft } from 'react-icons/fa';
-// import { useAuth } from '../context/AuthContext'; // আপনার Auth Context
+import { AuthContext } from '../../Context/AuthContext';
+
 
 const DetailsPage = () => {
     const movie = useLoaderData();
     const navigate = useNavigate();
-    // const { currentUser } = useAuth(); // Auth Context থেকে user নিন
-    
-    // const isOwner = currentUser && movie.addedBy === currentUser.email;
+    const { user } = useContext(AuthContext)
 
-    const handleDelete = async () => {
-        if (window.confirm('Are you sure you want to delete this movie?')) {
-            try {
-                await fetch(`http://localhost:3000/movies/${movie._id}`, {
-                    method: 'DELETE'
-                });
-                navigate('/movies');
-            } catch (error) {
-                console.error('Error deleting movie:', error);
-            }
-        }
-    };
+    const isOwner = user && movie.addedBy === user.email;
+
+    // const handleDelete = async () => {
+    //     if (window.confirm('Are you sure you want to delete this movie?')) {
+    //         try {
+    //             await fetch(`http://localhost:3000/movies/${movie._id}`, {
+    //                 method: 'DELETE'
+    //             });
+    //             navigate('/movies');
+    //         } catch (error) {
+    //             console.error('Error deleting movie:', error);
+    //         }
+    //     }
+    // };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-base-100 to-base-200 py-8">
             <div className="container mx-auto px-4">
-                <button 
+                <button
                     onClick={() => navigate(-1)}
                     className="btn btn-ghost btn-sm mb-6 hover:scale-105 transition-transform"
                 >
@@ -38,8 +39,8 @@ const DetailsPage = () => {
                     {/* Left Column - Movie Poster */}
                     <div className="flex justify-center lg:justify-start">
                         <div className="relative group">
-                            <img 
-                                src={movie.posterUrl} 
+                            <img
+                                src={movie.posterUrl}
                                 alt={movie.title}
                                 className="w-full max-w-md rounded-2xl shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-3xl"
                             />
@@ -53,7 +54,7 @@ const DetailsPage = () => {
                             <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
                                 {movie.title}
                             </h1>
-                            
+
                             <div className="flex flex-wrap items-center gap-4">
                                 <div className="badge bg-red-500 badge-lg text-white font-bold py-3 px-4">
                                     {movie.genre}
@@ -67,24 +68,29 @@ const DetailsPage = () => {
                         </div>
 
                         {/* Action Buttons - Only for Owner */}
-                        {/* {isOwner && ( */}
+                        {isOwner ? (
                             <div className="flex gap-3 animate-fade-in">
-                                <Link 
+                                <Link
                                     to={`/update-movie/${movie._id}`}
                                     className="btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"
                                 >
                                     <FaEdit />
                                     Edit Movie
                                 </Link>
-                                <button 
-                                    onClick={handleDelete}
+                                <button
+                                    // onClick={handleDelete}
                                     className="btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"
                                 >
                                     <FaTrash />
                                     Delete Movie
                                 </button>
                             </div>
-                        {/* )} */}
+                        ) : 
+                        <div className='space-x-3'>
+                            <button className='btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'>Download</button>
+                            <button className='btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'>Wishlist</button>
+                        </div>
+                    }
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
@@ -133,9 +139,9 @@ const DetailsPage = () => {
                             <h3 className="font-semibold mb-3">Cast</h3>
                             <div className="flex flex-wrap gap-2">
                                 {movie.cast.split(', ').map((actor, index) => (
-                                    <span 
+                                    <span
                                         key={index}
-                                        className="badge badge-outline badge-lg hover:badge-primary transition-all cursor-pointer"
+                                        className="badge badge-outline badge-lg hover:text-red-500 transition-all cursor-pointer"
                                     >
                                         {actor}
                                     </span>

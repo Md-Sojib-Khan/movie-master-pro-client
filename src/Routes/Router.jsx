@@ -5,15 +5,16 @@ import AllMovies from "../Pages/AllMoviesPage/AllMovies";
 import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import Register from "../Pages/RegisterPage/Register";
 import Login from "../Pages/LoginPage/Login";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
         path: '/',
         Component: RootLayout,
-        children:[
+        children: [
             {
                 index: true,
-                Component:Home
+                Component: Home
             },
             {
                 path: '/all-movies',
@@ -21,8 +22,10 @@ const router = createBrowserRouter([
             },
             {
                 path: '/movies/:id',
-                loader: ({params}) => fetch(`http://localhost:3000/movies/${params.id}`),
-                element:<DetailsPage></DetailsPage>
+                loader: ({ params }) => fetch(`http://localhost:3000/movies/${params.id}`),
+                element: <PrivateRoute>
+                    <DetailsPage></DetailsPage>
+                </PrivateRoute>
             },
             {
                 path: '/register',

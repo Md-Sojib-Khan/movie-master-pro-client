@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-    // const location = useLocation();
+    const location = useLocation();
     const navigate = useNavigate();
     const { logInUser, googleSignInUser } = useContext(AuthContext);
 
@@ -18,7 +18,7 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
                 alert('Signin Successfully')
-                // navigate(location.state || '/')
+                navigate(location.state || '/')
             })
             .catch(error => {
                 if (error.code === 'auth/invalid-credential') {
@@ -38,7 +38,7 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
                 alert('Google SignIn Successfull')
-                // navigate(location.state || '/')
+                navigate(location.state || '/')
 
             })
             .catch(error => {
