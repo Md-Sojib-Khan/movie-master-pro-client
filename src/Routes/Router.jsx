@@ -6,6 +6,7 @@ import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import Register from "../Pages/RegisterPage/Register";
 import Login from "../Pages/LoginPage/Login";
 import PrivateRoute from "./PrivateRoute";
+import AddMovie from "../Pages/AddMovie/AddMovie";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 Component: Login
+            },
+            {
+                path: '/add-movie',
+                element: <AddMovie></AddMovie>
             }
         ]
     }

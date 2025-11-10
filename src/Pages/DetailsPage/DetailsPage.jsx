@@ -3,27 +3,11 @@ import { useLoaderData, useNavigate, Link } from 'react-router';
 import { FaStar, FaClock, FaCalendarAlt, FaLanguage, FaGlobe, FaUser, FaEdit, FaTrash, FaArrowLeft } from 'react-icons/fa';
 import { AuthContext } from '../../Context/AuthContext';
 
-
 const DetailsPage = () => {
     const movie = useLoaderData();
     const navigate = useNavigate();
     const { user } = useContext(AuthContext)
-
     const isOwner = user && movie.addedBy === user.email;
-
-    // const handleDelete = async () => {
-    //     if (window.confirm('Are you sure you want to delete this movie?')) {
-    //         try {
-    //             await fetch(`http://localhost:3000/movies/${movie._id}`, {
-    //                 method: 'DELETE'
-    //             });
-    //             navigate('/movies');
-    //         } catch (error) {
-    //             console.error('Error deleting movie:', error);
-    //         }
-    //     }
-    // };
-
     return (
         <div className="min-h-screen bg-gradient-to-br from-base-100 to-base-200 py-8">
             <div className="container mx-auto px-4">
@@ -44,7 +28,7 @@ const DetailsPage = () => {
                                 alt={movie.title}
                                 className="w-full max-w-md rounded-2xl shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-3xl"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                     </div>
 
@@ -71,14 +55,12 @@ const DetailsPage = () => {
                         {isOwner ? (
                             <div className="flex gap-3 animate-fade-in">
                                 <Link
-                                    to={`/update-movie/${movie._id}`}
                                     className="btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"
                                 >
                                     <FaEdit />
                                     Edit Movie
                                 </Link>
                                 <button
-                                    // onClick={handleDelete}
                                     className="btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"
                                 >
                                     <FaTrash />
@@ -138,7 +120,7 @@ const DetailsPage = () => {
                         <div className="bg-base-100 p-4 rounded-xl shadow-sm border border-base-300">
                             <h3 className="font-semibold mb-3">Cast</h3>
                             <div className="flex flex-wrap gap-2">
-                                {movie.cast.split(', ').map((actor, index) => (
+                                {movie.cast?.split(', ').map((actor, index) => (
                                     <span
                                         key={index}
                                         className="badge badge-outline badge-lg hover:text-red-500 transition-all cursor-pointer"
