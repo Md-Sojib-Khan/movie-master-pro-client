@@ -3,13 +3,15 @@ import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import useAxios from '../../Hooks/useAxios';
 
 
 const Register = () => {
     const { createUser, setUser, updateUser, googleSignInUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    const [error, setError] = useState('')
+    const [error, setError] = useState('');
+    const axiosInstance = useAxios();
 
     const errorMessages = {
         'auth/email-already-in-use': 'This email is already registered!',
@@ -28,6 +30,7 @@ const Register = () => {
         const photoURL = from.photoURL.value;
         const email = from.email.value;
         const password = from.password.value;
+        const newUser = { name, email, photoURL }
 
         const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
         if (!regex.test(password)) {
@@ -40,6 +43,14 @@ const Register = () => {
                 const userData = result.user;
                 toast.success('SignUp successfully')
                 navigate('/')
+
+                axiosInstance.post('/users', newUser)
+                    .then(data => {
+                        if (data.data.insertedId) {
+                            toast.success('Saved user information')
+                        }
+                    })
+
                 updateUser({ displayName: name, photoURL: photoURL })
                     .then(() => {
                         setUser({ ...userData, displayName: name, photoURL: photoURL });
@@ -57,9 +68,22 @@ const Register = () => {
 
     const handleGoogleSignIn = () => {
         googleSignInUser()
-            .then(() => {
+            .then((result) => {
                 toast.success('Login Successfully')
                 navigate('/')
+
+                const newUser = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    photoURL: result.user.photoURL
+                }
+
+                axiosInstance.post('/users', newUser)
+                    .then(data => {
+                        if (data.data.insertedId) {
+                            toast.success('Saved user information')
+                        }
+                    })
             })
             .catch(error => {
                 const message = errorMessages[error.code] || errorMessages.default;

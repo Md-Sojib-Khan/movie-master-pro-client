@@ -20,7 +20,7 @@ const ActionsMovies = () => {
             <h1 className='text-xl font-bold mb-5 border-l-4 border-red-500 pl-2'>Actions Movies</h1>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
-                    actionMovies.map(movie => <MovieCard movie={movie}></MovieCard>)
+                    actionMovies.map(movie => <MovieCard movie={movie} key={movie._id}></MovieCard>)
                 }
             </div>
         </div>

@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
+import useAxios from '../../Hooks/useAxios';
 
 const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { logInUser, googleSignInUser } = useContext(AuthContext);
+    const axiosInstance = useAxios();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,6 +42,18 @@ const Login = () => {
                 alert('Google SignIn Successfull')
                 navigate(location.state || '/')
 
+                const newUser = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    photoURL: result.user.photoURL
+                }
+
+                axiosInstance.post('/users', newUser)
+                    .then(data => {
+                        if (data.data.insertedId) {
+                            toast.success('Saved user information')
+                        }
+                    })
             })
             .catch(error => {
                 toast.error(`Google Sign-in failed: ${error.message}`);
