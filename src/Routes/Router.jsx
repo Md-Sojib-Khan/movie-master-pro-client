@@ -7,6 +7,7 @@ import Register from "../Pages/RegisterPage/Register";
 import Login from "../Pages/LoginPage/Login";
 import PrivateRoute from "./PrivateRoute";
 import AddMovie from "../Pages/AddMovie/AddMovie";
+import MyCollection from "../Pages/MyCollection/MyCollection";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {
                 path: '/add-movie',
                 element: <AddMovie></AddMovie>
+            },
+            {
+                path: '/my-collection',
+                element: <MyCollection></MyCollection>
             }
         ]
     }

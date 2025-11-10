@@ -10,7 +10,7 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/all-movies'}>All Movies</NavLink></li>
-        <li><NavLink to={'/'}>My Collection</NavLink></li>
+        <li><NavLink to={'/my-collection'}>My Collection</NavLink></li>
         <li><NavLink to={'/add-movie'}>Add Movie</NavLink></li>
     </>
 

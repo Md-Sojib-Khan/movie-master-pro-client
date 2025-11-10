@@ -19,7 +19,7 @@ const AllMovies = () => {
         <div className='w-11/12 mx-auto my-10'>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
-                    allMovies.map(movie => <MovieCard movie={movie}></MovieCard>)
+                    allMovies.map(movie => <MovieCard movie={movie} key={movie._id}></MovieCard>)
                 }
             </div>
         </div>

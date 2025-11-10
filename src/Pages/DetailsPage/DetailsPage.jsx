@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useLoaderData, useNavigate, Link } from 'react-router';
-import { FaStar, FaClock, FaCalendarAlt, FaLanguage, FaGlobe, FaUser, FaEdit, FaTrash, FaArrowLeft } from 'react-icons/fa';
+import { FaStar, FaClock, FaCalendarAlt, FaLanguage, FaGlobe, FaUser, FaEdit, FaTrash, FaArrowLeft, FaDownload } from 'react-icons/fa';
 import { AuthContext } from '../../Context/AuthContext';
 
 const DetailsPage = () => {
@@ -69,7 +69,7 @@ const DetailsPage = () => {
                             </div>
                         ) : 
                         <div className='space-x-3'>
-                            <button className='btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'>Download</button>
+                            <button className='btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'><FaDownload />Download</button>
                             <button className='btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'>Wishlist</button>
                         </div>
                     }

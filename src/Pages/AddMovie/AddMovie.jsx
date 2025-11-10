@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import useAxios from '../../Hooks/useAxios';
 import Swal from 'sweetalert2';
-import { number } from 'framer-motion';
 
 const AddMovie = () => {
     const { user } = useContext(AuthContext);
