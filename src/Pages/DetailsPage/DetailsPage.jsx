@@ -54,7 +54,7 @@ const DetailsPage = () => {
                         {/* Action Buttons - Only for Owner */}
                         {isOwner ? (
                             <div className="flex gap-3 animate-fade-in">
-                                <Link
+                                <Link to={`/movies/update/${movie._id}`}
                                     className="btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"
                                 >
                                     <FaEdit />

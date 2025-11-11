@@ -49,7 +49,7 @@ const MyCollection = () => {
                             </div>
                             <p>{movie.plotSummary}</p>
                             <div className=" flex items-center gap-3">
-                                <Link className="btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"><FaEdit />Edit Movie</Link>
+                                <Link to={`/movies/update/${movie._id}`} className="btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"><FaEdit />Edit Movie</Link>
                                 <button onClick={()=>handleDelete(movie._id)} className="btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"><FaTrash />Delete Movie</button>
                             </div>
                         </div>
