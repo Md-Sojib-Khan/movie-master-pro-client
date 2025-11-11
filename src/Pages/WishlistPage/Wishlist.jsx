@@ -5,17 +5,17 @@ import { FaClock, FaEdit, FaStar, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
-const MyCollection = () => {
+const Wishlist = () => {
     const [myMovies, setMyMovies] = useState([]);
     const axiosInstance = useAxios();
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        axiosInstance.get(`/movies?email=${user?.email}`)
+        axiosInstance.get(`/wishlist`)
             .then(data => setMyMovies(data.data))
     }, [user, axiosInstance])
 
-    const handleDelete = (id) => {
+    const handleRemove = (id) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -23,14 +23,14 @@ const MyCollection = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Remove it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosInstance.delete(`/movies/${id}`)
+                axiosInstance.delete(`/wishlist/${id}`)
                     .then(data => {
                         if (data.data.deletedCount) {
                             Swal.fire({
-                                title: "Deleted!",
+                                title: "Removed from wishlist",
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
@@ -74,9 +74,8 @@ const MyCollection = () => {
                                 <p className=" font-medium text-lg">{movie.duration} minutes</p>
                             </div>
                             <p>{movie.plotSummary}</p>
-                            <div className=" flex items-center gap-3">
-                                <Link to={`/movies/update/${movie._id}`} className="btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"><FaEdit />Edit Movie</Link>
-                                <button onClick={() => handleDelete(movie._id)} className="btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"><FaTrash />Delete Movie</button>
+                            <div className="card-actions justify-end">
+                                <button onClick={() => handleRemove(movie._id)} className="btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"><FaTrash />Remove</button>
                             </div>
                         </div>
                     </div>)
@@ -86,4 +85,4 @@ const MyCollection = () => {
     );
 };
 
-export default MyCollection;
+export default Wishlist;

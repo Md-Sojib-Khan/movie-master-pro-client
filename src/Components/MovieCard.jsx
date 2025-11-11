@@ -25,9 +25,9 @@ const MovieCard = ({ movie }) => {
                         </div>
                         
                         <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                            <button className="btn btn-sm btn-primary rounded-full px-4">
+                            <Link to={`https://www.youtube.com/results?search_query=${movie.title}+trailer`} target="_blank" className="btn btn-sm btn-primary rounded-full px-4">
                                 🎬 Watch Trailer
-                            </button>
+                            </Link>
                         </div>
                     </figure>
                     

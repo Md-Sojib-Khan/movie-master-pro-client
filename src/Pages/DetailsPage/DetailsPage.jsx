@@ -40,6 +40,27 @@ const DetailsPage = () => {
             }
         });
     }
+    const handleWishlist = () => {
+        const wishlistData = { ...movie, wishlist_by: user?.email }
+        axiosInstance.post('/wishlist', wishlistData)
+            .then(data => {
+                if (data.data.insertedId) {
+                    Swal.fire({
+                        title: "Successfully add to wishlist",
+                        icon: "success",
+                        draggable: true
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: `You allready add this movie ${error.message}`,
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+            })
+    }
     return (
         <div className="min-h-screen bg-gradient-to-br from-base-100 to-base-200 py-8">
             <div className="container mx-auto px-4">
@@ -92,7 +113,7 @@ const DetailsPage = () => {
                         ) :
                             <div className='space-x-3'>
                                 <button className='btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'><FaDownload />Download</button>
-                                <button className='btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'>Wishlist</button>
+                                <button onClick={handleWishlist} className='btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'>🧡 Wishlist</button>
                             </div>
                         }
 

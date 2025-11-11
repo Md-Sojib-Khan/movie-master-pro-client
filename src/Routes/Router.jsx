@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddMovie from "../Pages/AddMovie/AddMovie";
 import MyCollection from "../Pages/MyCollection/MyCollection";
 import UpdateMovie from "../Pages/UpdateMovie/UpdateMovie";
+import Wishlist from "../Pages/WishlistPage/Wishlist";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
                     <UpdateMovie></UpdateMovie>
                 </PrivateRoute>
             },
+            {
+                path: '/my-wishlist',
+                element: <Wishlist></Wishlist>
+            }
         ]
     }
 ])

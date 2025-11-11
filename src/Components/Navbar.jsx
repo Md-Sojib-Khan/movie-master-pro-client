@@ -40,7 +40,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
                         {links}
                     </ul>
                 </div>
@@ -65,6 +65,7 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow-sm space-y-2">
                                 <li><a className='font-medium'>{user.displayName}</a></li>
+                                <li><Link to={'/my-wishlist'} className='font-medium'>My Wishlist</Link></li>
                                 <li><button onClick={handleSignOut} className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">LogOut</button></li>
                             </ul>
                         </div>
