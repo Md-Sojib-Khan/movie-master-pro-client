@@ -44,7 +44,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to={'/'} className="btn btn-ghost text-xl">MovieMaster Pro</Link>
+                <Link to={'/'} className="btn btn-ghost text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">MovieMaster Pro</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -70,9 +70,9 @@ const Navbar = () => {
                             </ul>
                         </div>
 
-                        : <div className='flex gap-2'>
+                        : <div className='flex items-center gap-2'>
                             <Link to={'/login'} className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">Login</Link>
-                            <Link to={'/register'} className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">Register</Link>
+                            <Link to={'/register'} className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium hidden md:inline-flex">Register</Link>
                         </div>
                 }
 

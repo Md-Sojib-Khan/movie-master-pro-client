@@ -1,59 +1,88 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaYoutube, FaFilm, FaHeart } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <div className='bg-[#001931] text-white'>
-            <footer className=" py-10 w-11/12 mx-auto md:flex justify-between">
-                <aside className='md:w-1/3 mb-5'>
-                    <div className='flex items-center gap-1'>
-                        {/* <img className='w-9' src={logoImg} alt="" /> */}
-                        <h1 className='font-bold bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent'>HERO.IO</h1>
-                    </div>
-                    <p>
-                        Explore a universe of applications for your device. Find tools for productivity, creativity, entertainment, and more, all carefully curated for quality and security.
+        <div className='bg-gray-900 text-white'>
+            <footer className="py-12 w-11/12 mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+                    {/* Brand Section */}
+                    <aside className='col-span-2'>
+                        <div className='flex items-center gap-2 mb-4'>
+                            <FaFilm className="text-purple-500 text-2xl" />
+                            <h1 className='font-bold text-2xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>MovieMaster Pro</h1>
+                        </div>
+                        <p className="text-gray-300 leading-relaxed">
+                            Your ultimate destination for movie magic. Discover, explore, and enjoy the world of cinema 
+                            with detailed information, reviews, and recommendations. From classic films to latest blockbusters, 
+                            we bring the theater experience to you.
+                        </p>
+                        <div className="flex gap-4 mt-4">
+                            <a href="#" className="text-gray-400 hover:text-purple-500 transition-colors">
+                                <FaGithub className="text-xl" />
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+                                <FaXTwitter className="text-xl" />
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors">
+                                <FaLinkedin className="text-xl" />
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-red-600 transition-colors">
+                                <FaYoutube className="text-xl" />
+                            </a>
+                        </div>
+                    </aside>
 
-                        Your official destination for apps and games. We connect developers and users in a safe, trusted, and vibrant ecosystem.
-
-                        The ultimate platform to find the perfect apps to power your passions and simplify your life. Download with confidence.
-                    </p>
-                </aside>
-                <div className='flex justify-around mb-5 lg:space-x-28 md:space-x-14'>
-                    <nav className='flex flex-col gap-2'>
-                        <h6 className="footer-title">Services</h6>
-                        <a className="link link-hover">Branding</a>
-                        <a className="link link-hover">Design</a>
-                        <a className="link link-hover">Marketing</a>
-                        <a className="link link-hover">Advertisement</a>
+                    {/* Quick Links */}
+                    <nav className='flex flex-col gap-3'>
+                        <h6 className="text-lg font-semibold mb-2 text-white">Explore</h6>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Movies</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">TV Shows</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Trending</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Upcoming</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Top Rated</a>
                     </nav>
-                    <nav className='flex flex-col gap-2'>
-                        <h6 className="footer-title">Company</h6>
-                        <a className="link link-hover">About us</a>
-                        <a className="link link-hover">Contact</a>
-                        <a className="link link-hover">Jobs</a>
-                        <a className="link link-hover">Press kit</a>
+
+                    {/* Categories */}
+                    <nav className='flex flex-col gap-3'>
+                        <h6 className="text-lg font-semibold mb-2 text-white">Categories</h6>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Action</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Comedy</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Drama</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Sci-Fi</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Horror</a>
+                    </nav>
+
+                    {/* Support */}
+                    <nav className='flex flex-col gap-3'>
+                        <h6 className="text-lg font-semibold mb-2 text-white">Support</h6>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Help Center</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Contact Us</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Privacy Policy</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Terms of Service</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">FAQ</a>
                     </nav>
                 </div>
-                <div className='flex justify-around lg:space-x-28 md:space-x-14'>
-                    <nav className='flex flex-col gap-2'>
-                        <h6 className="footer-title">Legal</h6>
-                        <a className="link link-hover">Terms of use</a>
-                        <a className="link link-hover">Privacy policy</a>
-                        <a className="link link-hover">Cookie policy</a>
-                    </nav>
-                    <div className='flex flex-col gap-2'>
-                        <h6 className="footer-title">Connect</h6>
-                        <a className="link link-hover flex items-center gap-1"><FaGithub />GitHub</a>
-                        <a className="link link-hover flex items-center gap-1"><FaTwitter />Twitter</a>
-                        <a className="link link-hover flex items-center gap-1"><FaLinkedin />LinkedIn</a>
-                        <a className="link link-hover flex items-center gap-1"><FaYoutube />YouTube</a>
+
+                {/* Bottom Footer */}
+                <div className="border-t border-gray-700 pt-6 mt-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <aside className="flex items-center gap-2 text-gray-300">
+                            <p>© {new Date().getFullYear()} MovieMaster Pro. All rights reserved.</p>
+                        </aside>
+                        <div className="flex items-center gap-2 text-gray-300">
+                            <span>Made with</span>
+                            <FaHeart className="text-red-500" />
+                            <span>for movie lovers</span>
+                        </div>
+                        <nav className="flex gap-6 text-gray-300">
+                            <a className="hover:text-purple-400 transition-colors cursor-pointer text-sm">Privacy</a>
+                            <a className="hover:text-purple-400 transition-colors cursor-pointer text-sm">Terms</a>
+                            <a className="hover:text-purple-400 transition-colors cursor-pointer text-sm">Cookies</a>
+                        </nav>
                     </div>
                 </div>
-            </footer>
-            <footer className="footer sm:footer-horizontal footer-center p-4 border-t border-gray-500">
-                <aside>
-                    <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-                </aside>
             </footer>
         </div>
     );

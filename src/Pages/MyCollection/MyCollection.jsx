@@ -7,12 +7,16 @@ import Swal from 'sweetalert2';
 
 const MyCollection = () => {
     const [myMovies, setMyMovies] = useState([]);
+    const [loading, setLoading] = useState(true)
     const axiosInstance = useAxios();
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
         axiosInstance.get(`/movies?email=${user?.email}`)
-            .then(data => setMyMovies(data.data))
+            .then(data => {
+                setMyMovies(data.data)
+                setLoading(false)
+            })
     }, [user, axiosInstance])
 
     const handleDelete = (id) => {
@@ -43,6 +47,11 @@ const MyCollection = () => {
             }
         });
     }
+
+    if (loading) {
+        return <p className='min-h-screen flex justify-center items-center'><span className="loading loading-spinner loading-xl"></span></p>
+    }
+
     return (
         <div className='w-11/12 mx-auto'>
             <div className='grid grid-cols-1 md:grid-cols-2 my-5 gap-5'>
