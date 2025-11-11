@@ -40,6 +40,11 @@ const UpdateMovie = () => {
             });
 
     }
+
+    if(user && movie.addedBy !== user.email){
+        return <h1 className='text-4xl font-bold text-center md:my-40'>You are not the woner of this movie!</h1>
+    }
+
     return (
         <div className="card bg-base-100 w-full max-w-sm md:max-w-md shrink-0 shadow-2xl mx-auto my-5">
             <div className="card-body">

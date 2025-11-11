@@ -26,9 +26,7 @@ const router = createBrowserRouter([
             {
                 path: '/movies/:id',
                 loader: ({ params }) => fetch(`http://localhost:3000/movies/${params.id}`),
-                element: <PrivateRoute>
-                    <DetailsPage></DetailsPage>
-                </PrivateRoute>
+                element: <DetailsPage></DetailsPage>
             },
             {
                 path: '/register',
@@ -40,16 +38,22 @@ const router = createBrowserRouter([
             },
             {
                 path: '/add-movie',
-                element: <AddMovie></AddMovie>
+                element: <PrivateRoute>
+                    <AddMovie></AddMovie>
+                </PrivateRoute>
             },
             {
                 path: '/my-collection',
-                element: <MyCollection></MyCollection>
+                element: <PrivateRoute>
+                    <MyCollection></MyCollection>
+                </PrivateRoute>
             },
             {
                 path: '/movies/update/:id',
                 loader: ({ params }) => fetch(`http://localhost:3000/movies/${params.id}`),
-                element: <UpdateMovie></UpdateMovie>
+                element: <PrivateRoute>
+                    <UpdateMovie></UpdateMovie>
+                </PrivateRoute>
             },
         ]
     }

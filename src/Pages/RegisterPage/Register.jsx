@@ -119,7 +119,7 @@ const Register = () => {
                         </div>
                         <p className='text-xs text-red-500'>{error}</p>
                         <button className="btn btn-neutral mt-4 hover:bg-white hover:text-black border-black">SignUp</button>
-                        <div className='mt-3'><div className="font-medium">Already Have An Account ? <Link to={'/login'} className='link link-hover text-red-500'>SignIn</Link></div></div>
+                        <div className='mt-3'><div className="font-medium">Already Have An Account ? <Link to={'/login'} className='link link-hover text-red-500'>Login</Link></div></div>
                     </form>
                     <div className="divider">OR</div>
                     <button onClick={handleGoogleSignIn} className="btn bg-white text-black border-[#e5e5e5] hover:bg-black hover:text-white">

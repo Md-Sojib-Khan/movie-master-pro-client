@@ -2,12 +2,44 @@ import React, { useContext } from 'react';
 import { useLoaderData, useNavigate, Link } from 'react-router';
 import { FaStar, FaClock, FaCalendarAlt, FaLanguage, FaGlobe, FaUser, FaEdit, FaTrash, FaArrowLeft, FaDownload } from 'react-icons/fa';
 import { AuthContext } from '../../Context/AuthContext';
+import Swal from 'sweetalert2';
+import useAxios from '../../Hooks/useAxios';
 
 const DetailsPage = () => {
     const movie = useLoaderData();
     const navigate = useNavigate();
     const { user } = useContext(AuthContext)
+    const axiosInstance = useAxios()
     const isOwner = user && movie.addedBy === user.email;
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosInstance.delete(`/movies/${id}`)
+                    .then(data => {
+                        if (data.data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                        navigate('/all-movies')
+                    })
+                    .catch(err => {
+                        console.error("Error Deleting movie:", err);
+                    });
+            }
+        });
+    }
     return (
         <div className="min-h-screen bg-gradient-to-br from-base-100 to-base-200 py-8">
             <div className="container mx-auto px-4">
@@ -54,25 +86,15 @@ const DetailsPage = () => {
                         {/* Action Buttons - Only for Owner */}
                         {isOwner ? (
                             <div className="flex gap-3 animate-fade-in">
-                                <Link to={`/movies/update/${movie._id}`}
-                                    className="btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"
-                                >
-                                    <FaEdit />
-                                    Edit Movie
-                                </Link>
-                                <button
-                                    className="btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"
-                                >
-                                    <FaTrash />
-                                    Delete Movie
-                                </button>
+                                <Link to={`/movies/update/${movie._id}`} className="btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"><FaEdit />Edit Movie</Link>
+                                <button onClick={() => handleDelete(movie._id)} className="btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform"><FaTrash />Delete Movie</button>
                             </div>
-                        ) : 
-                        <div className='space-x-3'>
-                            <button className='btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'><FaDownload />Download</button>
-                            <button className='btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'>Wishlist</button>
-                        </div>
-                    }
+                        ) :
+                            <div className='space-x-3'>
+                                <button className='btn btn-warning btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'><FaDownload />Download</button>
+                                <button className='btn btn-error btn-sm md:btn-md gap-2 hover:scale-105 transition-transform'>Wishlist</button>
+                            </div>
+                        }
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
