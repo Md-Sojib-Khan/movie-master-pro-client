@@ -10,11 +10,13 @@ import AddMovie from "../Pages/AddMovie/AddMovie";
 import MyCollection from "../Pages/MyCollection/MyCollection";
 import UpdateMovie from "../Pages/UpdateMovie/UpdateMovie";
 import Wishlist from "../Pages/WishlistPage/Wishlist";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         Component: RootLayout,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 index: true,
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
             {
                 path: '/movies/:id',
                 loader: ({ params }) => fetch(`http://localhost:3000/movies/${params.id}`),
+                hydrateFallbackElement: <p className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-xl"></span></p>,
                 element: <DetailsPage></DetailsPage>
             },
             {
@@ -52,6 +55,7 @@ const router = createBrowserRouter([
             {
                 path: '/movies/update/:id',
                 loader: ({ params }) => fetch(`http://localhost:3000/movies/${params.id}`),
+                hydrateFallbackElement: <p className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-xl"></span></p>,
                 element: <PrivateRoute>
                     <UpdateMovie></UpdateMovie>
                 </PrivateRoute>

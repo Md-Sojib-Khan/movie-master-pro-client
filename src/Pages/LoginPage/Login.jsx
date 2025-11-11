@@ -19,7 +19,7 @@ const Login = () => {
         logInUser(email, password)
             .then(result => {
                 console.log(result.user)
-                alert('Signin Successfully')
+                toast.success('Signin Successfully')
                 navigate(location.state || '/')
             })
             .catch(error => {
@@ -39,7 +39,7 @@ const Login = () => {
         googleSignInUser()
             .then(result => {
                 console.log(result.user)
-                alert('Google SignIn Successfull')
+                toast.success('Google SignIn Successfull')
                 navigate(location.state || '/')
 
                 const newUser = {

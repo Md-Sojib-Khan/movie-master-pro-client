@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import { toast } from 'react-toastify';
+import userImg from '../assets/user.png'
 
 const Navbar = () => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
@@ -61,7 +62,7 @@ const Navbar = () => {
                     user
                         ? <div className="dropdown dropdown-end dropdown-hover cursor-pointer">
                             <div tabIndex={0} role="button" >
-                                <img className='w-10 h-10 object-cover rounded-full border-2 border-white' src={user?.photoURL ? user?.photoURL : "img"} alt="" />
+                                <img className='w-10 h-10 object-cover rounded-full border-2 border-white' src={user?.photoURL ? user?.photoURL : userImg } alt="" />
                             </div>
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow-sm space-y-2">
                                 <li><a className='font-medium'>{user.displayName}</a></li>
