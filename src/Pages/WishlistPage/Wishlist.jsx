@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import { AuthContext } from '../../Context/AuthContext';
-import { FaClock, FaEdit, FaStar, FaTrash } from 'react-icons/fa';
+import { FaClock, FaStar, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
@@ -11,7 +11,7 @@ const Wishlist = () => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        axiosInstance.get(`/wishlist`)
+        axiosInstance.get(`/wishlist/email=${user?.email}`)
             .then(data => setMyMovies(data.data))
     }, [user, axiosInstance])
 
@@ -42,6 +42,9 @@ const Wishlist = () => {
                     });
             }
         });
+    }
+    if(myMovies.length == 0){
+        return <h1 className='text-4xl font-bold text-center md:my-40'>You have not added any movies to your wishlist!</h1>
     }
     return (
         <div className='w-11/12 mx-auto'>
