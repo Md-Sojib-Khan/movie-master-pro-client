@@ -1,16 +1,69 @@
-# React + Vite
+🎬 Movie Master Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site (Client Side): https://movie-master-pro-a292e.web.app
 
-Currently, two official plugins are available:
+📖 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Movie Master Pro is a modern movie platform where users can browse, view trailers, and manage their own movie collections.
+This project is built with React, Tailwind CSS, and Firebase for a smooth and responsive user experience.
 
-## React Compiler
+🌟 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+⭐ Dynamic Sections — Includes Hero, Top Rated, and Recently Added movie sections.
 
-## Expanding the ESLint configuration
+🔍 Search & Filter — Search movies by title, genre, or release year.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+❤️ My Collection / Wishlist — Add or remove your favorite movies easily.
+
+🎬 Trailer Links — Each movie includes a YouTube trailer link that opens in a new tab.
+
+🛡️ User Authentication — Secure login and registration using Firebase Auth.
+
+⚡ Responsive Design — Fully responsive layout for mobile, tablet, and desktop screens.
+
+🧑‍💻 How to Run Locally
+
+Clone the repository:
+
+git clone <your-repo-url>
+cd <client-folder>
+
+Install dependencies:
+
+npm install
+
+Run the project:
+
+npm start
+
+
+Add your .env file with Firebase config or backend API URL if needed.
+
+🧩 Tech Stack
+
+Frontend: React, Tailwind CSS, Axios
+
+Backend: Node.js, Express.js, MongoDB (optional)
+
+Authentication: Firebase Auth
+
+Hosting: Vercel(server)
+
+Hosting: Firebase Hosting(client)
+
+📂 Folder Structure
+/client
+  /src
+    /components
+    /pages
+    /hooks
+    /assets
+  package.json
+
+
+Each component is styled using Tailwind CSS utilities, and API calls are handled with Axios or custom hooks.
+
+
+Feel free to fork this project, open issues, or suggest improvements.
+Developer: Md Sojib Khan
+Live URL: https://movie-master-pro-a292e.web.app
