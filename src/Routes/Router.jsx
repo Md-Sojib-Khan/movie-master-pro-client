@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/movies/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/movies/${params.id}`),
+                loader: ({ params }) => fetch(`https://movie-master-pro-api-server.vercel.app/movies/${params.id}`),
                 hydrateFallbackElement: <p className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-xl"></span></p>,
                 element: <DetailsPage></DetailsPage>
             },
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/movies/update/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/movies/${params.id}`),
+                loader: ({ params }) => fetch(`https://movie-master-pro-api-server.vercel.app/movies/${params.id}`),
                 hydrateFallbackElement: <p className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-xl"></span></p>,
                 element: <PrivateRoute>
                     <UpdateMovie></UpdateMovie>

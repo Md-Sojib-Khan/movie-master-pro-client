@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaClock, FaStar, FaTrash } from 'react-icons/fa';
-import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const Wishlist = () => {
@@ -11,8 +10,11 @@ const Wishlist = () => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        axiosInstance.get(`/wishlist/email=${user?.email}`)
-            .then(data => setMyMovies(data.data))
+        axiosInstance.get(`/wishlist?email=${user?.email}`)
+            .then(data => {
+                console.log(data.data)
+                setMyMovies(data.data)
+            })
     }, [user, axiosInstance])
 
     const handleRemove = (id) => {
@@ -43,9 +45,11 @@ const Wishlist = () => {
             }
         });
     }
-    if(myMovies.length == 0){
+
+    if (myMovies.length == 0) {
         return <h1 className='text-4xl font-bold text-center md:my-40'>You have not added any movies to your wishlist!</h1>
     }
+
     return (
         <div className='w-11/12 mx-auto'>
             <div className='grid grid-cols-1 md:grid-cols-2 my-5 gap-5'>

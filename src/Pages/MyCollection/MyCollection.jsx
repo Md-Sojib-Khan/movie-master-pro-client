@@ -52,6 +52,10 @@ const MyCollection = () => {
         return <p className='min-h-screen flex justify-center items-center'><span className="loading loading-spinner loading-xl"></span></p>
     }
 
+    if (myMovies.length == 0) {
+        return <h1 className='text-4xl font-bold text-center md:my-40'>You have not added any movies!</h1>
+    }
+
     return (
         <div className='w-11/12 mx-auto'>
             <div className='grid grid-cols-1 md:grid-cols-2 my-5 gap-5'>

@@ -13,7 +13,6 @@ const Home = () => {
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
-    const [loading, setLoading] = useState(true);
     const [allUsers, setAllUsers] = useState([])
     const axiosInstance = useAxios();
     const navigate = useNavigate();
@@ -23,7 +22,6 @@ const Home = () => {
             .then(res => {
                 setAllMovies(res.data);
                 setFilteredMovies(res.data);
-                setLoading(false);
             })
             .catch(error => {
                 console.error('Error fetching movies:', error);
@@ -74,13 +72,6 @@ const Home = () => {
         }
     };
 
-    if (loading) {
-        return (
-            <p className="min-h-screen flex justify-center items-center">
-                <span className="loading loading-spinner loading-xl"></span>
-            </p>
-        );
-    }
     return (
         <div>
             <Hero></Hero>
