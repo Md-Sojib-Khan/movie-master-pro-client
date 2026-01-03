@@ -49,7 +49,7 @@ const Hero = () => {
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh]">
+            <div className="relative w-full h-[60vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh]">
               <div className="w-full h-full flex items-center justify-center bg-gray-900">
                 <img
                   src={movie.posterUrl}

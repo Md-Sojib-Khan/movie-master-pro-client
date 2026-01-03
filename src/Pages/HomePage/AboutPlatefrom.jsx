@@ -135,23 +135,6 @@ const AboutPlatform = () => {
             </div>
           ))}
         </div>
-
-        <div className="text-center mt-12 bg-base-200 rounded-2xl p-8">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Ready to Master Your Movie Experience?
-          </h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Join MovieMaster Pro today and transform how you discover, organize, and enjoy movies.
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <button className="btn bg-red-500 text-white btn-lg">
-              Get Started Free
-            </button>
-            <button className="btn btn-outline btn-lg">
-              Learn More
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );

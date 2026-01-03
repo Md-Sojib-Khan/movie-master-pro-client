@@ -7,6 +7,8 @@ import DramaMovies from './DramaMovies';
 import AboutPlatefrom from './AboutPlatefrom';
 import useAxios from '../../Hooks/useAxios';
 import { useNavigate } from 'react-router';
+import FeatureCardsSection from './FeatureCardsSection';
+import FAQ from './FAQ';
 
 const Home = () => {
     const [allMovies, setAllMovies] = useState([]);
@@ -109,6 +111,8 @@ const Home = () => {
             <ActionsMovies></ActionsMovies>
             <DramaMovies></DramaMovies>
             <AboutPlatefrom></AboutPlatefrom>
+            <FeatureCardsSection></FeatureCardsSection>
+            <FAQ></FAQ>
         </div>
     );
 };
